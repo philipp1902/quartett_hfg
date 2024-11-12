@@ -1,0 +1,61 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'); */
+@font-face {
+    font-family: 'Inter';
+    src: url('/quartett/Inter Font/');
+   
+    
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+/* .background-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    z-index: -1;
+} */
+
+header {
+    z-index: 2;
+    text-align: center;
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    z-index: 1;
+    margin: 0;
+    color: #353535;
+    font-size: 3em;
+    padding-top: 20px;
+    justify-content: center;
+}
+
+h2 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    z-index: 1;
+    margin: 0;
+    color: #353535;
+    font-size: 1.25em;
+    padding-top: 20px;
+    justify-content: center;
+    font-weight: 400;
+}
+
+
+.heading-section {
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+

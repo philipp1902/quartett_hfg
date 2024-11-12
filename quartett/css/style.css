@@ -1,0 +1,171 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'); */
+@font-face {
+    font-family: 'Inter';
+    src: url('/quartett/Inter Font/');
+    
+}
+
+.active {
+    font-weight: bold;
+    color: #353535;
+    text-decoration: underline;
+}
+
+li {
+    list-style-type: none; 
+    font-size: 1.25em;
+}
+
+ul {
+    text-decoration: none;
+}
+
+.nav-items {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    padding: 0;
+}
+
+a {
+    color: #383838; 
+    text-decoration: none;
+}
+
+
+#card-container {
+    padding-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 869px) {
+    li {
+        font-size: 1.25em; 
+    }
+}
+
+@media (max-width: 550px) {
+    nav {
+        width: 100%;
+        z-index: 100;
+
+    }
+    
+    .nav-items {
+        display: flex; 
+        flex-direction: column;
+        position: relative;
+        top: 45px;
+        padding: 1em;
+        border-radius: 5px;
+        width: 100%;
+        z-index: 5;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
+
+button {
+    background-color: transparent;
+    border: 2px solid rgba(104, 104, 104, 0.5); 
+    color: rgba(95, 95, 95, 0.492);
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    right: 20px;
+}
+
+button:hover {
+    border-color: #353535; 
+    color: #353535;
+}
+
+
+#sorting-options {
+    padding: 1em 1.5em; 
+    font-size: 14px; 
+    margin-bottom: 1em;
+    color: #353535;
+    max-width: 600px; 
+    text-align: left;
+}
+
+@media (max-width: 869px) {
+    #sorting-options {
+        font-size: 1em;
+        padding: 0.8em 1em;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 869px) {
+    #button-container {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+    
+    }
+
+    #sorting-options {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        padding: 12px 16px;
+        font-size: 1em;
+        margin-bottom: 10px; 
+        justify-self: center;
+    }
+
+    #action-buttons {
+        display: flex;
+        flex-direction: row; 
+        justify-content: center; 
+        align-items: center; 
+        gap: 10px;
+        margin-top: 1em; 
+        position: relative;
+        right: -20px;
+ 
+
+    }
+
+    .sort-button, #shuffle-button, #reset-button {
+        padding: 12px 16px;
+        font-size: 1em;
+        margin-top: 10px;
+        background-color: transparent;
+        border: 2px solid rgba(104, 104, 104, 0.5);
+        color: rgba(95, 95, 95, 0.492);
+        cursor: pointer;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .sort-button:hover, #shuffle-button:hover, #reset-button:hover {
+        border-color: #353535;
+        color: #353535;
+    }
+}

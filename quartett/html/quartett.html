@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quartett</title>
+    <link rel="stylesheet" href="/quartett/css/style.css">
+    <link rel="stylesheet" href="/quartett/css/cards.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div style="position: absolute; top: 10px; right: 10px; color: rgb(185, 185, 185); font-size: 12px; text-align: right;">
+        <b>Philipp Maginot, IG3</b> <br> Programmiersprachen 3 <br> Fabian Rauch</div>
+    <nav>
+        <ul class="nav-items">
+            <li><a href="/quartett/html/index.html">Home</a></li>
+            <li><a href="/quartett/html/quartett.html" class="active">Quartett</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div id="button-container" style="display: flex; justify-content: space-between;  gap: 10px;">
+    <div id="sorting-options">
+        <p>Sortieren nach:</p>
+        <label><input type="radio" name="sort" class="sort-button" data-sort="max_weight"> Gewicht</label>
+        <label><input type="radio" name="sort" class="sort-button" data-sort="max_age"> Alter</label>
+        <label><input type="radio" name="sort" class="sort-button" data-sort="top_speed"> Höchstgeschwindigkeit</label>
+        <label><input type="radio" name="sort" class="sort-button" data-sort="max_length"> Länge</label>
+        <label><input type="radio" name="sort" class="sort-button" data-sort="deaths"> Kills</label>
+        <label><input type="radio" name="sort" class="sort-button" data-sort="intelligence"> Intelligenz</label>
+    </div>
+    <div id="action-buttons" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+        <button id="shuffle-button">Karten mischen</button>
+        <button id="reset-button">Zurücksetzen</button>
+    </div>
+</div>
+
+<div id="card-container"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/quartett/data/animaldata.js"></script> 
+<script src="/quartett/js/gmynd.js"></script>
+<script src="/quartett/js/script.js"></script> 
+
+<script>
+$(document).ready(function () {
+    const cardContainer = $("#card-container");
+
+    const groupColors = {
+        A: 'rgba(245, 181, 47, 0.8)',    
+        B: 'rgba(120, 184, 70, 0.8)',    
+        C: 'rgba(222, 196, 156, 0.8)',   
+        D: 'rgba(69, 123, 157, 0.8)',  
+        E: 'rgba(144, 101, 157, 0.8)', 
+        F: 'rgba(105, 105, 105, 0.8)', 
+        G: 'rgba(112, 89, 69, 0.8)',
+        H: 'rgba(193, 66, 66, 0.8)' 
+    };
+
+    const imageMapping = {
+        1: "a1.jpg", 2: "a2.jpg", 3: "a3.jpg", 4: "a4.jpg",
+        5: "b1.jpg", 6: "b2.jpg", 7: "b3.jpg", 8: "b4.jpg",
+        9: "c1.jpg", 10: "c2.jpg", 11: "c3.jpg", 12: "c4.jpg",
+        13: "d1.jpg", 14: "d2.jpg", 15: "d3.jpg", 16: "d4.jpg",
+        17: "e1.jpg", 18: "e2.jpg", 19: "e3.jpg", 20: "e4.jpg",
+        21: "f1.jpg", 22: "f2.jpg", 23: "f3.jpg", 24: "f4.jpg",
+        25: "g1.jpg", 26: "g2.jpg", 27: "g3.jpg", 28: "g4.jpg",
+        29: "h1.jpg", 30: "h2.jpg", 31: "h3.jpg", 32: "h4.jpg"
+    };
+
+    function renderCards(cardData) {
+        cardContainer.empty(); 
+        cardData.forEach((item, index) => {
+            const imageSrc = `/quartett/images/quartett-images/${imageMapping[item.id]}`;
+            const backgroundColor = groupColors[item.group] || 'rgba(248, 224, 0, 0.7)';
+            const cardHtml = `
+                <div class="card-wrapper" style="background: ${backgroundColor}">
+                    <div class="top-section">
+                        <div class="card-id">
+                            <p>${item.group} ${['1', '2', '3', '4'][index % 4]}</p>
+                        </div>
+                        <div class="card-title">
+                            <p>${item.name_german}</p>
+                        </div>
+                    </div>
+                    <div class="image-section">
+                        <img src="${imageSrc}" alt="${item.name}" class="img-respo">
+                    </div>
+                    <div class="trivia-section">
+                        <p class="trivia-style">${item.trivia_german}</p>
+                    </div>
+                    <div class="main-section">
+                        <div class="left-main-section">
+                            <div class="attribute-section">
+                                <div class="icon weight">
+                                    <img src="/quartett/images/icons/weight.png" class="scaleLOL" alt="Weight Icon"/>
+                                </div>
+                                <div class="value weight">
+                                    <p class="value-text">${item.max_weight} kg</p>
+                                </div>
+                            </div>
+                            <div class="attribute-section">
+                                <div class="icon age">
+                                    <img src="/quartett/images/icons/age.png" class="scaleLOL" alt="Age Icon"/>
+                                </div>
+                                <div class="value age">
+                                    <p class="value-text">${item.max_age} Jahre</p>
+                                </div>
+                            </div>
+                            <div class="attribute-section">
+                                <div class="icon speed">
+                                    <img src="/quartett/images/icons/speed.png" class="scaleLOL" alt="Speed Icon"/>
+                                </div>
+                                <div class="value speed">
+                                    <p class="value-text">${item.top_speed} kmh</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-main-section">
+                            <div class="attribute-section">
+                                <div class="icon length">
+                                    <img src="/quartett/images/icons/length.png" class="scaleLOL" alt="Size Icon"/>
+                                </div>
+                                <div class="value length">
+                                    <p class="value-text">${item.max_length} cm</p>
+                                </div>
+                            </div>
+                            <div class="attribute-section">
+                                <div class="icon death">
+                                    <img src="/quartett/images/icons/death.png" class="scaleLOL" alt="Death Icon"/>
+                                </div>
+                                <div class="value death">
+                                    <p class="value-text">${item.deaths} ${item.deaths === 1 ? 'kill' : 'kills'}</p>
+                                </div>
+                            </div>
+                            <div class="attribute-section">
+                                <div class="icon intelligence">
+                                    <img src="/quartett/images/icons/offspring.png" class="scaleLOL" alt="Offspring Icon"/>
+                                </div>
+                                <div class="value intelligence">
+                                    <p class="value-text">${item.intelligence}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            cardContainer.append(cardHtml);
+        });
+    }
+
+    if (typeof data !== "undefined") {
+        renderCards(data);
+    } else {
+        console.error("Data not loaded: check if '/quartett/data/animaldata.js' defines 'data'");
+    }
+
+    $(".sort-button").click(function () {
+        const sortBy = $(this).data("sort");
+        if (sortBy && typeof gmynd !== "undefined" && data) {
+            const sortedData = gmynd.sortData([...data], sortBy);
+            renderCards(sortedData);
+        } else {
+            console.error("Sorting error: Check gmynd.js or data loading");
+        }
+    });
+
+
+});
+</script>
+
+</body>
+</html>

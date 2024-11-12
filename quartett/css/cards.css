@@ -1,0 +1,130 @@
+:root {
+    --dark-color: #181818;
+    --background-color:rgb(255, 255, 255);  
+}
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'); */
+@font-face {
+    font-family: 'Inter';
+    src: url('/quartett/Inter Font/');
+ 
+}
+
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: rgb(247, 247, 247);
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.trivia-section {
+    display: flex;
+    margin-top: -5px;
+    background-color: #3535351e;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.trivia-style {
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    text-align: center;
+    margin: 18px;
+}
+
+.card-wrapper {
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #353535;                                        /* farbe schrift */
+    background: rgba(248, 157, 0, 0.7); 
+    border: 8px solid rgba(255, 255, 255, 0.035); 
+    border-radius: 10px;
+    width: 380px;
+    height: 666px;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.img-respo {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.top-section {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.card-id {
+ flex: 1;
+ padding-left: 20px;
+}
+
+.card-title {
+    text-align: center;
+    flex: 5;
+    background-color: #3535351e;
+    border-radius: 15px 15px 15px 15px;
+
+}
+
+.main-section {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.left-main-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* border-right: 1px solid #ccc; */
+}
+
+.right-main-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* border-left: 1px solid #ccc; */
+}
+
+.attribute-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.value {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    margin: 6px;
+    border-radius: 100px;
+    /* margin-left: -5px; */
+}
+
+.scaleLOL {
+    scale: 0.85;
+}
+
+.card-wrapper:hover {
+    transform: translateY(-10px);
+    transition: transform 0.3s ease-in-out;
+}
